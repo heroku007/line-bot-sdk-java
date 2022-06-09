@@ -41,8 +41,9 @@ public class EchoApplication {
     @EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         log.info("event: " + event);
-        final String originalMessageText = event.getMessage().getText();
-        return new TextMessage(originalMessageText);
+        String originalMessageText = event.getMessage().getText();
+        String Uid=event.source.getSenderId();
+        return new TextMessage(Uid + originalMessageText);
     }
 
     @EventMapping
